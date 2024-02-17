@@ -2,8 +2,6 @@ import { afterAll, beforeAll, describe, expect, it, jest } from '@jest/globals';
 
 jest.mock('../typeguards/isNestSupabaseConfigFactoryAsyncOptions');
 
-import { Type, DynamicModule, ForwardReference } from '@nestjs/common';
-
 import { createNestSupabaseConfigFactory } from './createNestSupabaseConfigFactory';
 import { SupabaseCoreModule } from './SupabaseCoreModule';
 import { SupabaseCoreModuleProvider } from './SupabaseCoreModuleProvider';
