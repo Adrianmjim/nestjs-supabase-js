@@ -76,11 +76,13 @@ describe(SupabaseCoreModuleProvider.name, () => {
         beforeAll(() => {
           supabaseConfigFixture = SupabaseConfigFixtures.any;
 
-          const supabaseCoreModuleProvider: SupabaseCoreModuleProvider = new SupabaseCoreModuleProvider(supabaseConfigFixture);
+          const supabaseCoreModuleProvider: SupabaseCoreModuleProvider = new SupabaseCoreModuleProvider(
+            supabaseConfigFixture,
+          );
 
           try {
             supabaseCoreModuleProvider.getClient();
-          } catch(error: unknown) {
+          } catch (error: unknown) {
             result = error;
           }
         });
@@ -91,7 +93,7 @@ describe(SupabaseCoreModuleProvider.name, () => {
 
         it('should throw an Error', () => {
           expect(result).toBeInstanceOf(Error);
-          expect((result as Error).message).toBe('SupabaseClient does not exist.')
+          expect((result as Error).message).toBe('SupabaseClient does not exist.');
         });
       });
 
@@ -105,9 +107,13 @@ describe(SupabaseCoreModuleProvider.name, () => {
           supabaseClientFixture = {} as Partial<SupabaseClient> as SupabaseClient;
 
           // eslint-disable-next-line @typescript-eslint/no-explicit-any
-          (createClient as jest.Mock<typeof createClient<any, "public", any>>).mockReturnValueOnce(supabaseClientFixture);
+          (createClient as jest.Mock<typeof createClient<any, 'public', any>>).mockReturnValueOnce(
+            supabaseClientFixture,
+          );
 
-          const supabaseCoreModuleProvider: SupabaseCoreModuleProvider = new SupabaseCoreModuleProvider(supabaseConfigFixture);
+          const supabaseCoreModuleProvider: SupabaseCoreModuleProvider = new SupabaseCoreModuleProvider(
+            supabaseConfigFixture,
+          );
 
           result = supabaseCoreModuleProvider.getClient();
         });
@@ -130,13 +136,15 @@ describe(SupabaseCoreModuleProvider.name, () => {
 
         beforeAll(() => {
           supabaseConfigFixture = SupabaseConfigFixtures.any;
-          clientNameFixture = 'client-name-example'
+          clientNameFixture = 'client-name-example';
 
-          const supabaseCoreModuleProvider: SupabaseCoreModuleProvider = new SupabaseCoreModuleProvider(supabaseConfigFixture);
+          const supabaseCoreModuleProvider: SupabaseCoreModuleProvider = new SupabaseCoreModuleProvider(
+            supabaseConfigFixture,
+          );
 
           try {
             supabaseCoreModuleProvider.getClient(clientNameFixture);
-          } catch(error: unknown) {
+          } catch (error: unknown) {
             result = error;
           }
         });
