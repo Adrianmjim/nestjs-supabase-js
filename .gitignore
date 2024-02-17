@@ -1,0 +1,11 @@
+# Typescript compiled files
+/lib/**
+
+# node modules
+/node_modules/
+
+# test coverage reports
+/coverage
+
+# env file
+.env

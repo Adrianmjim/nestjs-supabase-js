@@ -1,0 +1,62 @@
+name: Create release
+
+on:
+  workflow_dispatch:
+
+jobs:
+  create-release:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [20.x]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup PNPM
+        uses: pnpm/action-setup@v2.4.0
+        with:
+          version: latest
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'pnpm'
+          cache-dependency-path: package.json
+
+      - name: Install standard-version
+        run : pnpm i -g standard-version
+
+      - name: Config git
+        run: |
+          git config --global user.email "${{ github.event.sender.email }}"
+          git config --global user.name "${{ github.event.sender.login }}"
+
+      - name: Apply standard-version
+        run: standard-version -t ""  --no-verify
+
+      - name: Get new version
+        id: version
+        run: echo "VERSION=$(jq .version package.json -r)" >> $GITHUB_OUTPUT
+
+      - name: Commit release
+        run: |
+          git add .
+          git commit --no-verify -m "chore(release): ${{ steps.version.outputs.VERSION }}"
+          git checkout -b release/${{ steps.version.outputs.VERSION }}
+          git tag ${{ steps.version.outputs.VERSION }}
+          git push origin release/${{ steps.version.outputs.VERSION }}
+          git push --tags
+
+      - name: Create release PR
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh pr create \
+          --title "chore(release): ${{ steps.version.outputs.VERSION }}" \
+          --body "chore(release): ${{ steps.version.outputs.VERSION }}" \
+          --base master \
+          --head release/${{ steps.version.outputs.VERSION }} \
+          --label release

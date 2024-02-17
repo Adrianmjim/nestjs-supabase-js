@@ -1,0 +1,63 @@
+name: CD
+
+on:
+  pull_request:
+    types:
+      - closed
+    branches:
+      - master
+
+jobs:
+  create-repository-release:
+    if: github.event.pull_request.merged == true && startsWith(github.event.pull_request.head.ref , 'release/')
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Get Version
+        id: version
+        env:
+          BRANCH_NAME: ${{ github.event.pull_request.head.ref  }}
+        run: echo "VERSION=${BRANCH_NAME:8}" >> $GITHUB_OUTPUT
+
+      - name: Create repository release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh release create ${{ steps.version.outputs.VERSION }} --generate-notes
+
+
+  publish-packages:
+    if: github.event.pull_request.merged == true && startsWith(github.event.pull_request.head.ref , 'release/')
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [20.x]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup PNPM
+        uses: pnpm/action-setup@v2.4.0
+        with:
+          version: latest
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'pnpm'
+          cache-dependency-path: package.json
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Build
+        run: pnpm build
+
+      - name: Publish package  
+        run: pnpm publish:packages
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
