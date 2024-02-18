@@ -1,22 +1,32 @@
 {
-  "name": "nestjs-supabase",
-  "version": "0.0.1",
-  "description": "meow meow meow",
+  "name": "nestjs-supabase-js",
+  "version": "1.0.0",
+  "description": "NestJS Supabase integration",
   "keywords": [
     "nestjs",
     "supabase",
-    "module"
+    "supabase-js",
+    "module",
+    "supabase-auth",
+    "supabase-db",
+    "database",
+    "auth",
+    "authentication",
+    "postgres",
+    "supabase-storage",
+    "supabase-realtime",
+    "storage"
   ],
   "author": "Adrián Martínez Jiménez <adrianmjim199434@gmail.com>",
-  "homepage": "https://github.com/adrianmjim/nestjs-supabase#readme",
+  "homepage": "https://github.com/adrianmjim/nestjs-supabase-js#readme",
   "license": "ISC",
   "main": "lib/index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/adrianmjim/nestjs-supabase.git"
+    "url": "git+https://github.com/adrianmjim/nestjs-supabase-js.git"
   },
   "bugs": {
-    "url": "https://github.com/adrianmjim/nestjs-supabase/issues"
+    "url": "https://github.com/adrianmjim/nestjs-supabase-js/issues"
   },
   "devDependencies": {
     "@jest/globals": "29.7.0",

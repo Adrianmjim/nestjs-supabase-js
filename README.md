@@ -2,6 +2,11 @@
   <a href="https://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo_text.svg" width="200" alt="Nest Logo" /></a><br /><a href="https://supabase.com/" target="blank"><img src="https://user-images.githubusercontent.com/8291514/213727225-56186826-bee8-43b5-9b15-86e839d89393.png#gh-dark-mode-only" width="500" alt="Supabase"></a>
 </p>
 
+![Test](https://github.com/adrianmjim/nestjs-supabase-js/actions/workflows/codecov_test.yml/badge.svg)
+[![codecov](https://codecov.io/gh/Adrianmjim/nestjs-supabase-js/graph/badge.svg?token=jNHEDepqm7)](https://codecov.io/gh/Adrianmjim/nestjs-supabase-js)
+[![NPM Version](https://badge.fury.io/js/nestjs-supabase-js.svg?style=flat)](https://npmjs.org/package/nestjs-supabase-js)
+[![NPM Download Stats](https://nodei.co/npm/nestjs-supabase-js.png?downloads=true)](https://www.npmjs.com/package/nestjs-supabase-js)
+
 ## Description
 
 The [Supabase](https://github.com/supabase/supabase-js) module for [NestJS](https://github.com/nestjs/nest).
@@ -12,17 +17,17 @@ First install the dependencies via `npm`, `pnpm` or `yarn`:
 
 npm:
 ```bash
-$ npm i -s @nest/common @supabase/supabase-js nest-supabase
+$ npm i -s @nest/common @supabase/supabase-js nest-supabase-js
 ```
 
 pnpm:
 ```bash
-$ pnpm add @nest/common @supabase/supabase-js nest-supabase
+$ pnpm add @nest/common @supabase/supabase-js nest-supabase-js
 ```
 
 yarn:
 ```bash
-$ yarn add @nest/common @supabase/supabase-js nest-supabase
+$ yarn add @nest/common @supabase/supabase-js nest-supabase-js
 ```
 
 ## Configuration
@@ -31,7 +36,7 @@ First, import the module into your NestJS application and configure it using the
 
 ```typescript
 import { Module } from '@nestjs/common';
-import { SupabaseModule } from 'nestjs-supabase';
+import { SupabaseModule } from 'nestjs-supabase-js';
 
 @Module({
   imports: [
@@ -48,7 +53,7 @@ Or, You can configure it asynchronously as follows:
 
 ```typescript
 import { Module } from '@nestjs/common';
-import { SupabaseModule } from 'nestjs-supabase';
+import { SupabaseModule } from 'nestjs-supabase-js';
 
 @Module({
   imports: [
@@ -71,7 +76,7 @@ In certain situations, we will need to connect to different Supabase projects, w
 
 ```typescript
 import { Module } from '@nestjs/common';
-import { SupabaseModule } from 'nestjs-supabase';
+import { SupabaseModule } from 'nestjs-supabase-js';
 
 @Module({
   imports: [
@@ -100,7 +105,7 @@ Or asynchronously:
 
 ```typescript
 import { Module } from '@nestjs/common';
-import { SupabaseModule } from 'nestjs-supabase';
+import { SupabaseModule } from 'nestjs-supabase-js';
 
 @Module({
   imports: [
@@ -135,7 +140,7 @@ First, inject the client into the module where you want to use it:
 
 ```typescript
 import { Module } from '@nestjs/common';
-import { SupabaseModule } from 'nestjs-supabase';
+import { SupabaseModule } from 'nestjs-supabase-js';
 
 @Module({
   imports: [
@@ -149,7 +154,7 @@ Or, for a specific connection:
 
 ```typescript
 import { Module } from '@nestjs/common';
-import { SupabaseModule } from 'nestjs-supabase';
+import { SupabaseModule } from 'nestjs-supabase-js';
 
 @Module({
   imports: [
@@ -177,7 +182,7 @@ Or, for a specific connection:
 
 ```typescript
 import { SupabaseClient } from '@supabase/supabase-js';
-import { InjectSupabaseClient } from 'nestjs-supabase';
+import { InjectSupabaseClient } from 'nestjs-supabase-js';
 
 export class CatService {
   constructor(
@@ -195,7 +200,7 @@ It's also possible to use the InjectSupabaseClient decorator to inject the Supab
 
 ```typescript
 import { SupabaseClient } from '@supabase/supabase-js';
-import { InjectSupabaseClient } from 'nestjs-supabase';
+import { InjectSupabaseClient } from 'nestjs-supabase-js';
 
 export class CatService {
   constructor(
@@ -208,7 +213,7 @@ export class CatService {
 }
 ```
 
-## 🤝 Contributing
+## 🤝 Contributing [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/adrianmjim/nestjs-supabase-js/issues)
 
 Contributions, issues and feature requests are welcome.
 
@@ -218,7 +223,7 @@ Contributions, issues and feature requests are welcome.
 
 - Github: [@adrianmjim](https://github.com/adrianmjim)
 
-See also the list of contributors who [participated](https://github.com/adrianmjim/nestjs-supabase/contributors) in this project.
+See also the list of contributors who [participated](https://github.com/adrianmjim/nestjs-supabase-js/contributors) in this project.
 
 ## Show Your Support
 
