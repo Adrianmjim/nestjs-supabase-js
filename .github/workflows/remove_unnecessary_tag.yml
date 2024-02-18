@@ -1,0 +1,25 @@
+name: Remove unnecessary tag
+
+on:
+  pull_request:
+    types:
+      - closed
+    branches:
+      - master
+
+jobs:
+  remove-unnecessary-tag:
+    if: github.event.pull_request.merged == false && startsWith(github.event.pull_request.head.ref , 'release/')
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Get Version
+        id: version
+        env:
+          BRANCH_NAME: ${{ github.event.pull_request.head.ref  }}
+        run: echo "VERSION=${BRANCH_NAME:8}" >> $GITHUB_OUTPUT
+
+      - name: Remove unnecessary tag
+        run: git push --delete origin ${{ steps.version.outputs.VERSION }}
