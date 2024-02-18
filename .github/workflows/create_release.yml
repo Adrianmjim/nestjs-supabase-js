@@ -44,7 +44,6 @@ jobs:
       - name: Commit release
         run: |
           git checkout -b release/${{ steps.version.outputs.VERSION }}
-          git tag ${{ steps.version.outputs.VERSION }}
           git push origin release/${{ steps.version.outputs.VERSION }}
           git push --tags
 
