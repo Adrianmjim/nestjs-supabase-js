@@ -13,6 +13,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GIT_TOKEN }}
 
       - name: Setup PNPM
         uses: pnpm/action-setup@v3.0.0
@@ -49,11 +51,11 @@ jobs:
 
       - name: Create release PR
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ github.token }}
         run: |
           gh pr create \
           --title "chore(release): ${{ steps.version.outputs.VERSION }}" \
           --body "chore(release): ${{ steps.version.outputs.VERSION }}" \
-          --base master \
+          --base main \
           --head release/${{ steps.version.outputs.VERSION }} \
           --label release
