@@ -23,7 +23,7 @@ jobs:
 
       - name: Create repository release
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GIT_TOKEN }}
         run: gh release create ${{ steps.version.outputs.VERSION }} --generate-notes
 
 
@@ -58,6 +58,6 @@ jobs:
         run: pnpm build
 
       - name: Publish package  
-        run: pnpm publish:packages
+        run: pnpm publish:package
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
