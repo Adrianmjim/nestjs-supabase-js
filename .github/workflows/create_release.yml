@@ -37,7 +37,7 @@ jobs:
           git config --global user.name "${{ github.event.sender.login }}"
 
       - name: Apply standard-version
-        run: standard-version -t ""  --no-verify --first-release
+        run: standard-version -t ""  --no-verify
 
       - name: Get new version
         id: version
