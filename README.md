@@ -13,21 +13,21 @@ The [Supabase](https://github.com/supabase/supabase-js) module for [NestJS](http
 
 ## Installation
 
-First install the dependencies via `npm`, `pnpm` or `yarn`:
+Install the dependencies via `npm`, `pnpm` or `yarn`:
 
 npm:
 ```bash
-$ npm i -s @nest/common @supabase/supabase-js nest-supabase-js
+$ npm i -s @nestjs/common @supabase/supabase-js nestjs-supabase-js
 ```
 
 pnpm:
 ```bash
-$ pnpm add @nest/common @supabase/supabase-js nest-supabase-js
+$ pnpm add @nestjs/common @supabase/supabase-js nestjs-supabase-js
 ```
 
 yarn:
 ```bash
-$ yarn add @nest/common @supabase/supabase-js nest-supabase-js
+$ yarn add @nestjs/common @supabase/supabase-js nestjs-supabase-js
 ```
 
 ## Configuration
