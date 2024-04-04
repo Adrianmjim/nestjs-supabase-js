@@ -30,7 +30,7 @@
   },
   "devDependencies": {
     "@jest/globals": "29.7.0",
-    "@types/node": "20.12.3",
+    "@types/node": "20.12.4",
     "@typescript-eslint/eslint-plugin": "7.5.0",
     "@typescript-eslint/parser": "7.5.0",
     "eslint": "8.57.0",
@@ -43,7 +43,7 @@
     "rimraf": "5.0.5",
     "ts-jest": "29.1.2",
     "ts-node": "10.9.2",
-    "typescript": "5.4.3"
+    "typescript": "5.4.4"
   },
   "peerDependencies": {
     "@nestjs/common": "^10.2.7 || ^9.4.0",
