@@ -1,11 +1,12 @@
-import { afterAll, beforeAll, describe, expect, it, jest } from '@jest/globals';
+import { afterAll, beforeAll, describe, expect, it, Mock, vitest } from 'vitest';
+
 import { Inject } from '@nestjs/common';
 
 import { getSupabaseClientId } from './getSupabaseClientId';
 import { InjectSupabaseClient } from './InjectSupabaseClient';
 
-jest.mock('@nestjs/common', () => ({ Inject: jest.fn() }));
-jest.mock('./getSupabaseClientId');
+vitest.mock('@nestjs/common', () => ({ Inject: vitest.fn() }));
+vitest.mock('./getSupabaseClientId');
 
 describe(InjectSupabaseClient.name, () => {
   describe('when called', () => {
@@ -16,13 +17,13 @@ describe(InjectSupabaseClient.name, () => {
       clientNameFixture = 'client-name-example';
       resolvedClientNameFixture = 'resolved-client-name-example';
 
-      (getSupabaseClientId as jest.Mock<typeof getSupabaseClientId>).mockReturnValueOnce(resolvedClientNameFixture);
+      (getSupabaseClientId as Mock<typeof getSupabaseClientId>).mockReturnValueOnce(resolvedClientNameFixture);
 
       InjectSupabaseClient(clientNameFixture);
     });
 
     afterAll(() => {
-      jest.clearAllMocks();
+      vitest.clearAllMocks();
     });
 
     it('should call Inject()', () => {

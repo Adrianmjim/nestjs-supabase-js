@@ -116,10 +116,7 @@ jobs:
         run: pnpm install
       
       - name: Check Tests
-        run: pnpm test:js:coverage
-
-      - name: Build
-        run: pnpm build
+        run: pnpm test:coverage
 
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v4

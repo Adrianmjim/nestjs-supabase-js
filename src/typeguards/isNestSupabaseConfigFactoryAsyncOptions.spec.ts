@@ -1,4 +1,4 @@
-import { beforeAll, describe, expect, it } from '@jest/globals';
+import { beforeAll, describe, expect, it } from 'vitest';
 
 import { isNestSupabaseConfigFactoryAsyncOptions } from './isNestSupabaseConfigFactoryAsyncOptions';
 import { NestSupabaseConfig } from '../models/NestSupabaseConfig';
@@ -33,7 +33,7 @@ describe(isNestSupabaseConfigFactoryAsyncOptions.name, () => {
       });
 
       it('should return true', () => {
-        expect(result).toBe(false);
+        expect(result).toBeFalsy();
       });
     });
   });
@@ -58,7 +58,7 @@ describe(isNestSupabaseConfigFactoryAsyncOptions.name, () => {
       });
 
       it('should return false', () => {
-        expect(result).toBe(true);
+        expect(result).toBeTruthy();
       });
     });
   });

@@ -1,6 +1,6 @@
-import { afterAll, beforeAll, describe, expect, it, jest } from '@jest/globals';
+import { afterAll, beforeAll, describe, expect, it, Mock, vitest } from 'vitest';
 
-jest.mock('../typeguards/isNestSupabaseConfigFactoryAsyncOptions');
+vitest.mock('../typeguards/isNestSupabaseConfigFactoryAsyncOptions');
 
 import { createNestSupabaseConfigFactory } from './createNestSupabaseConfigFactory';
 import { SupabaseCoreModule } from './SupabaseCoreModule';
@@ -27,7 +27,7 @@ describe(SupabaseCoreModule.name, () => {
       });
 
       afterAll(() => {
-        jest.clearAllMocks();
+        vitest.clearAllMocks();
       });
 
       it('should return a DynamicModule', () => {
@@ -56,16 +56,14 @@ describe(SupabaseCoreModule.name, () => {
           nestSupabaseConfigFactoryAsyncOptionsFixture = NestSupabaseConfigFactoryAsyncOptionsFixtures.any;
 
           (
-            isNestSupabaseConfigFactoryAsyncOptions as unknown as jest.Mock<
-              typeof isNestSupabaseConfigFactoryAsyncOptions
-            >
+            isNestSupabaseConfigFactoryAsyncOptions as unknown as Mock<typeof isNestSupabaseConfigFactoryAsyncOptions>
           ).mockReturnValueOnce(true);
 
           result = SupabaseCoreModule.forRootAsync(nestSupabaseConfigFactoryAsyncOptionsFixture);
         });
 
         afterAll(() => {
-          jest.clearAllMocks();
+          vitest.clearAllMocks();
         });
 
         it('should call isNestSupabaseConfigFactoryAsyncOptions()', () => {
@@ -102,16 +100,14 @@ describe(SupabaseCoreModule.name, () => {
           nestSupabaseConfigFactoryAsyncOptionsFixture = NestSupabaseConfigFactoryAsyncOptionsFixtures.withoutInject;
 
           (
-            isNestSupabaseConfigFactoryAsyncOptions as unknown as jest.Mock<
-              typeof isNestSupabaseConfigFactoryAsyncOptions
-            >
+            isNestSupabaseConfigFactoryAsyncOptions as unknown as Mock<typeof isNestSupabaseConfigFactoryAsyncOptions>
           ).mockReturnValueOnce(true);
 
           result = SupabaseCoreModule.forRootAsync(nestSupabaseConfigFactoryAsyncOptionsFixture);
         });
 
         afterAll(() => {
-          jest.clearAllMocks();
+          vitest.clearAllMocks();
         });
 
         it('should call isNestSupabaseConfigFactoryAsyncOptions()', () => {
@@ -148,16 +144,14 @@ describe(SupabaseCoreModule.name, () => {
           nestSupabaseConfigFactoryAsyncOptionsFixture = NestSupabaseConfigFactoryAsyncOptionsFixtures.withoutImports;
 
           (
-            isNestSupabaseConfigFactoryAsyncOptions as unknown as jest.Mock<
-              typeof isNestSupabaseConfigFactoryAsyncOptions
-            >
+            isNestSupabaseConfigFactoryAsyncOptions as unknown as Mock<typeof isNestSupabaseConfigFactoryAsyncOptions>
           ).mockReturnValueOnce(true);
 
           result = SupabaseCoreModule.forRootAsync(nestSupabaseConfigFactoryAsyncOptionsFixture);
         });
 
         afterAll(() => {
-          jest.clearAllMocks();
+          vitest.clearAllMocks();
         });
 
         it('should call isNestSupabaseConfigFactoryAsyncOptions()', () => {
@@ -203,16 +197,14 @@ describe(SupabaseCoreModule.name, () => {
           };
 
           (
-            isNestSupabaseConfigFactoryAsyncOptions as unknown as jest.Mock<
-              typeof isNestSupabaseConfigFactoryAsyncOptions
-            >
+            isNestSupabaseConfigFactoryAsyncOptions as unknown as Mock<typeof isNestSupabaseConfigFactoryAsyncOptions>
           ).mockReturnValueOnce(false);
 
           result = SupabaseCoreModule.forRootAsync(nestSupabaseConfigClassAsyncOptionsFixture);
         });
 
         afterAll(() => {
-          jest.clearAllMocks();
+          vitest.clearAllMocks();
         });
 
         it('should call isNestSupabaseConfigFactoryAsyncOptions()', () => {

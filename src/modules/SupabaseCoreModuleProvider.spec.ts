@@ -1,7 +1,8 @@
-import { afterAll, beforeAll, describe, expect, it, jest } from '@jest/globals';
+import { afterAll, beforeAll, describe, expect, it, Mock, vitest } from 'vitest';
+
 import { SupabaseClient, createClient } from '@supabase/supabase-js';
 
-jest.mock('@supabase/supabase-js');
+vitest.mock('@supabase/supabase-js');
 
 import { SupabaseCoreModuleProvider } from './SupabaseCoreModuleProvider';
 import { SupabaseConfigFixtures } from '../fixtures/SupabaseConfigFixtures';
@@ -21,7 +22,7 @@ describe(SupabaseCoreModuleProvider.name, () => {
         });
 
         afterAll(() => {
-          jest.clearAllMocks();
+          vitest.clearAllMocks();
         });
 
         it('should call createClient()', () => {
@@ -51,7 +52,7 @@ describe(SupabaseCoreModuleProvider.name, () => {
         });
 
         afterAll(() => {
-          jest.clearAllMocks();
+          vitest.clearAllMocks();
         });
 
         it('should call createClient()', () => {
@@ -87,7 +88,7 @@ describe(SupabaseCoreModuleProvider.name, () => {
         });
 
         afterAll(() => {
-          jest.clearAllMocks();
+          vitest.clearAllMocks();
         });
 
         it('should throw an Error', () => {
@@ -106,9 +107,7 @@ describe(SupabaseCoreModuleProvider.name, () => {
           supabaseClientFixture = {} as Partial<SupabaseClient> as SupabaseClient;
 
           // eslint-disable-next-line @typescript-eslint/no-explicit-any
-          (createClient as jest.Mock<typeof createClient<any, 'public', any>>).mockReturnValueOnce(
-            supabaseClientFixture,
-          );
+          (createClient as Mock<typeof createClient<any, 'public', any>>).mockReturnValueOnce(supabaseClientFixture);
 
           const supabaseCoreModuleProvider: SupabaseCoreModuleProvider = new SupabaseCoreModuleProvider(
             supabaseConfigFixture,
@@ -118,7 +117,7 @@ describe(SupabaseCoreModuleProvider.name, () => {
         });
 
         afterAll(() => {
-          jest.clearAllMocks();
+          vitest.clearAllMocks();
         });
 
         it('should return a SupabaseClient', () => {
@@ -149,7 +148,7 @@ describe(SupabaseCoreModuleProvider.name, () => {
         });
 
         afterAll(() => {
-          jest.clearAllMocks();
+          vitest.clearAllMocks();
         });
 
         it('should throw an Error', () => {
