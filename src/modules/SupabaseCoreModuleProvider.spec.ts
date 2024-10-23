@@ -1,6 +1,7 @@
-import { afterAll, beforeAll, describe, expect, it, Mock, vitest } from 'vitest';
+import { afterAll, beforeAll, describe, expect, it, vitest } from 'vitest';
 
 import { SupabaseClient, createClient } from '@supabase/supabase-js';
+import { GenericSchema } from '@supabase/supabase-js/dist/module/lib/types';
 
 vitest.mock('@supabase/supabase-js');
 
@@ -99,15 +100,14 @@ describe(SupabaseCoreModuleProvider.name, () => {
 
       describe('when called and providers.get() returns SupabaseClient', () => {
         let supabaseConfigFixture: SupabaseConfig;
-        let supabaseClientFixture: SupabaseClient;
+        let supabaseClientFixture: SupabaseClient<unknown, never, GenericSchema>;
         let result: unknown;
 
         beforeAll(() => {
           supabaseConfigFixture = SupabaseConfigFixtures.any;
-          supabaseClientFixture = {} as Partial<SupabaseClient> as SupabaseClient;
+          supabaseClientFixture = {} as SupabaseClient<unknown, never, GenericSchema>;
 
-          // eslint-disable-next-line @typescript-eslint/no-explicit-any
-          (createClient as Mock<typeof createClient<any, 'public', any>>).mockReturnValueOnce(supabaseClientFixture);
+          vitest.mocked(createClient).mockReturnValueOnce(supabaseClientFixture);
 
           const supabaseCoreModuleProvider: SupabaseCoreModuleProvider = new SupabaseCoreModuleProvider(
             supabaseConfigFixture,

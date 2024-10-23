@@ -1,4 +1,4 @@
-import { afterAll, beforeAll, describe, expect, it, Mock, vitest } from 'vitest';
+import { afterAll, beforeAll, describe, expect, it, vitest } from 'vitest';
 
 vitest.mock('../typeguards/isNestSupabaseConfigFactoryAsyncOptions');
 
@@ -55,9 +55,7 @@ describe(SupabaseCoreModule.name, () => {
         beforeAll(() => {
           nestSupabaseConfigFactoryAsyncOptionsFixture = NestSupabaseConfigFactoryAsyncOptionsFixtures.any;
 
-          (
-            isNestSupabaseConfigFactoryAsyncOptions as unknown as Mock<typeof isNestSupabaseConfigFactoryAsyncOptions>
-          ).mockReturnValueOnce(true);
+          vitest.mocked(isNestSupabaseConfigFactoryAsyncOptions).mockReturnValueOnce(true);
 
           result = SupabaseCoreModule.forRootAsync(nestSupabaseConfigFactoryAsyncOptionsFixture);
         });
@@ -99,9 +97,7 @@ describe(SupabaseCoreModule.name, () => {
         beforeAll(() => {
           nestSupabaseConfigFactoryAsyncOptionsFixture = NestSupabaseConfigFactoryAsyncOptionsFixtures.withoutInject;
 
-          (
-            isNestSupabaseConfigFactoryAsyncOptions as unknown as Mock<typeof isNestSupabaseConfigFactoryAsyncOptions>
-          ).mockReturnValueOnce(true);
+          vitest.mocked(isNestSupabaseConfigFactoryAsyncOptions).mockReturnValueOnce(true);
 
           result = SupabaseCoreModule.forRootAsync(nestSupabaseConfigFactoryAsyncOptionsFixture);
         });
@@ -143,9 +139,7 @@ describe(SupabaseCoreModule.name, () => {
         beforeAll(() => {
           nestSupabaseConfigFactoryAsyncOptionsFixture = NestSupabaseConfigFactoryAsyncOptionsFixtures.withoutImports;
 
-          (
-            isNestSupabaseConfigFactoryAsyncOptions as unknown as Mock<typeof isNestSupabaseConfigFactoryAsyncOptions>
-          ).mockReturnValueOnce(true);
+          vitest.mocked(isNestSupabaseConfigFactoryAsyncOptions).mockReturnValueOnce(true);
 
           result = SupabaseCoreModule.forRootAsync(nestSupabaseConfigFactoryAsyncOptionsFixture);
         });
@@ -196,9 +190,7 @@ describe(SupabaseCoreModule.name, () => {
             useClass: NestSupabaseConfigFactoryTest,
           };
 
-          (
-            isNestSupabaseConfigFactoryAsyncOptions as unknown as Mock<typeof isNestSupabaseConfigFactoryAsyncOptions>
-          ).mockReturnValueOnce(false);
+          vitest.mocked(isNestSupabaseConfigFactoryAsyncOptions).mockReturnValueOnce(false);
 
           result = SupabaseCoreModule.forRootAsync(nestSupabaseConfigClassAsyncOptionsFixture);
         });

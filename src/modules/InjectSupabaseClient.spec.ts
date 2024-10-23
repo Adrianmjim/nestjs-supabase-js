@@ -1,4 +1,4 @@
-import { afterAll, beforeAll, describe, expect, it, Mock, vitest } from 'vitest';
+import { afterAll, beforeAll, describe, expect, it, vitest } from 'vitest';
 
 import { Inject } from '@nestjs/common';
 
@@ -17,7 +17,7 @@ describe(InjectSupabaseClient.name, () => {
       clientNameFixture = 'client-name-example';
       resolvedClientNameFixture = 'resolved-client-name-example';
 
-      (getSupabaseClientId as Mock<typeof getSupabaseClientId>).mockReturnValueOnce(resolvedClientNameFixture);
+      vitest.mocked(getSupabaseClientId).mockReturnValueOnce(resolvedClientNameFixture);
 
       InjectSupabaseClient(clientNameFixture);
     });

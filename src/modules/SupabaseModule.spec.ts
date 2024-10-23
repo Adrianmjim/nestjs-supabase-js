@@ -1,4 +1,4 @@
-import { afterAll, beforeAll, describe, expect, it, Mock, vitest } from 'vitest';
+import { afterAll, beforeAll, describe, expect, it, vitest } from 'vitest';
 
 import { DynamicModule } from '@nestjs/common';
 import { SupabaseClient } from '@supabase/supabase-js';
@@ -28,9 +28,7 @@ describe(SupabaseModule.name, () => {
           module: SupabaseCoreModule,
         };
 
-        (SupabaseCoreModule.forRoot as Mock<typeof SupabaseCoreModule.forRoot>).mockReturnValueOnce(
-          dynamicModuleFixture,
-        );
+        vitest.mocked(SupabaseCoreModule.forRoot).mockReturnValueOnce(dynamicModuleFixture);
 
         result = SupabaseModule.forRoot(nestSupabaseConfigFixture);
       });
@@ -65,9 +63,7 @@ describe(SupabaseModule.name, () => {
           module: SupabaseCoreModule,
         };
 
-        (SupabaseCoreModule.forRootAsync as Mock<typeof SupabaseCoreModule.forRootAsync>).mockReturnValueOnce(
-          dynamicModuleFixture,
-        );
+        vitest.mocked(SupabaseCoreModule.forRootAsync).mockReturnValueOnce(dynamicModuleFixture);
 
         result = SupabaseModule.forRootAsync(nestSupabaseConfigAsyncFixture);
       });
@@ -96,7 +92,7 @@ describe(SupabaseModule.name, () => {
         let result: unknown;
 
         beforeAll(() => {
-          (getSupabaseClientId as Mock<typeof getSupabaseClientId>).mockReturnValueOnce(SupabaseClient);
+          vitest.mocked(getSupabaseClientId).mockReturnValueOnce(SupabaseClient);
 
           result = SupabaseModule.injectClient();
         });
