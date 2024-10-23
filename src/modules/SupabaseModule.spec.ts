@@ -3,7 +3,6 @@ import { afterAll, beforeAll, describe, expect, it, vitest } from 'vitest';
 import { DynamicModule } from '@nestjs/common';
 import { SupabaseClient } from '@supabase/supabase-js';
 
-import { getSupabaseClientId } from './getSupabaseClientId';
 import { SupabaseCoreModule } from './SupabaseCoreModule';
 import { SupabaseCoreModuleProvider } from './SupabaseCoreModuleProvider';
 import { SupabaseModule } from './SupabaseModule';
@@ -11,8 +10,9 @@ import { NestSupabaseConfigFactoryAsyncOptionsFixtures } from '../fixtures/NestS
 import { SupabaseConfigFixtures } from '../fixtures/SupabaseConfigFixtures';
 import { NestSupabaseConfig } from '../models/NestSupabaseConfig';
 import { NestSupabaseConfigAsync } from '../models/NestSupabaseConfigAsync';
+import { getSupabaseClientId } from '../utils/getSupabaseClientId';
 
-vitest.mock('./getSupabaseClientId');
+vitest.mock('../utils/getSupabaseClientId');
 vitest.mock('./SupabaseCoreModule');
 
 describe(SupabaseModule.name, () => {

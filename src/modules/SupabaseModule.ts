@@ -1,11 +1,11 @@
 import { DynamicModule, Module } from '@nestjs/common';
 import { SupabaseClient } from '@supabase/supabase-js';
 
-import { getSupabaseClientId } from './getSupabaseClientId';
 import { SupabaseCoreModule } from './SupabaseCoreModule';
 import { SupabaseCoreModuleProvider } from './SupabaseCoreModuleProvider';
 import { NestSupabaseConfig } from '../models/NestSupabaseConfig';
 import { NestSupabaseConfigAsync } from '../models/NestSupabaseConfigAsync';
+import { getSupabaseClientId } from '../utils/getSupabaseClientId';
 
 @Module({})
 export class SupabaseModule {

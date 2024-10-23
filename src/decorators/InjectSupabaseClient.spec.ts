@@ -2,11 +2,11 @@ import { afterAll, beforeAll, describe, expect, it, vitest } from 'vitest';
 
 import { Inject } from '@nestjs/common';
 
-import { getSupabaseClientId } from './getSupabaseClientId';
 import { InjectSupabaseClient } from './InjectSupabaseClient';
+import { getSupabaseClientId } from '../utils/getSupabaseClientId';
 
 vitest.mock('@nestjs/common', () => ({ Inject: vitest.fn() }));
-vitest.mock('./getSupabaseClientId');
+vitest.mock('../utils/getSupabaseClientId');
 
 describe(InjectSupabaseClient.name, () => {
   describe('when called', () => {

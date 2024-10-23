@@ -1,4 +1,4 @@
-export { InjectSupabaseClient } from './modules/InjectSupabaseClient';
+export { InjectSupabaseClient } from './decorators/InjectSupabaseClient';
 export { NestSupabaseConfig } from './models/NestSupabaseConfig';
 export { NestSupabaseConfigAsync } from './models/NestSupabaseConfigAsync';
 export { NestSupabaseConfigClassAsyncOptions } from './models/NestSupabaseConfigClassAsyncOptions';
