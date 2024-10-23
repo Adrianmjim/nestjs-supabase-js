@@ -1,8 +1,7 @@
 import { afterAll, beforeAll, describe, expect, it, jest } from '@jest/globals';
+import { SupabaseClient, createClient } from '@supabase/supabase-js';
 
 jest.mock('@supabase/supabase-js');
-
-import { SupabaseClient, createClient } from '@supabase/supabase-js';
 
 import { SupabaseCoreModuleProvider } from './SupabaseCoreModuleProvider';
 import { SupabaseConfigFixtures } from '../fixtures/SupabaseConfigFixtures';

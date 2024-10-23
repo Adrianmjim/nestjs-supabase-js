@@ -8,7 +8,7 @@ const DEFAULT_CLIENT: string = 'default';
 
 @Injectable()
 export class SupabaseCoreModuleProvider {
-  private readonly supabaseClients: Map<string, SupabaseClient> = new Map();
+  private readonly supabaseClients: Map<string, SupabaseClient> = new Map<string, SupabaseClient>();
 
   public constructor(
     @Inject(SupabaseCoreModuleInjectionSymbols.SUPABASE_CONFIG) nestSupbaseConfig: NestSupabaseConfig,

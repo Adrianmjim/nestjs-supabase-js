@@ -9,3 +9,5 @@
 
 # env file
 .env
+
+tsconfig.tsbuildinfo

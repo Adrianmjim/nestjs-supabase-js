@@ -4,5 +4,6 @@ import { NestSupabaseConfigFactoryAsyncOptions } from '../models/NestSupabaseCon
 export function isNestSupabaseConfigFactoryAsyncOptions(
   value: NestSupabaseConfigAsync,
 ): value is NestSupabaseConfigFactoryAsyncOptions {
+  // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
   return (value as NestSupabaseConfigFactoryAsyncOptions).useFactory !== undefined;
 }

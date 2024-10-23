@@ -1,8 +1,4 @@
 import { afterAll, beforeAll, describe, expect, it, jest } from '@jest/globals';
-
-jest.mock('./getSupabaseClientId');
-jest.mock('./SupabaseCoreModule');
-
 import { DynamicModule } from '@nestjs/common';
 import { SupabaseClient } from '@supabase/supabase-js';
 
@@ -14,6 +10,9 @@ import { NestSupabaseConfigFactoryAsyncOptionsFixtures } from '../fixtures/NestS
 import { SupabaseConfigFixtures } from '../fixtures/SupabaseConfigFixtures';
 import { NestSupabaseConfig } from '../models/NestSupabaseConfig';
 import { NestSupabaseConfigAsync } from '../models/NestSupabaseConfigAsync';
+
+jest.mock('./getSupabaseClientId');
+jest.mock('./SupabaseCoreModule');
 
 describe(SupabaseModule.name, () => {
   describe('.forRoot()', () => {
