@@ -1,4 +1,5 @@
-import { afterAll, beforeAll, describe, expect, it, jest } from '@jest/globals';
+import { afterAll, beforeAll, describe, expect, it, Mock, vitest } from 'vitest';
+
 import { DynamicModule } from '@nestjs/common';
 import { SupabaseClient } from '@supabase/supabase-js';
 
@@ -11,8 +12,8 @@ import { SupabaseConfigFixtures } from '../fixtures/SupabaseConfigFixtures';
 import { NestSupabaseConfig } from '../models/NestSupabaseConfig';
 import { NestSupabaseConfigAsync } from '../models/NestSupabaseConfigAsync';
 
-jest.mock('./getSupabaseClientId');
-jest.mock('./SupabaseCoreModule');
+vitest.mock('./getSupabaseClientId');
+vitest.mock('./SupabaseCoreModule');
 
 describe(SupabaseModule.name, () => {
   describe('.forRoot()', () => {
@@ -27,7 +28,7 @@ describe(SupabaseModule.name, () => {
           module: SupabaseCoreModule,
         };
 
-        (SupabaseCoreModule.forRoot as jest.Mock<typeof SupabaseCoreModule.forRoot>).mockReturnValueOnce(
+        (SupabaseCoreModule.forRoot as Mock<typeof SupabaseCoreModule.forRoot>).mockReturnValueOnce(
           dynamicModuleFixture,
         );
 
@@ -35,7 +36,7 @@ describe(SupabaseModule.name, () => {
       });
 
       afterAll(() => {
-        jest.clearAllMocks();
+        vitest.clearAllMocks();
       });
 
       it('should call SupbaseCoreModule.forRoot()', () => {
@@ -64,7 +65,7 @@ describe(SupabaseModule.name, () => {
           module: SupabaseCoreModule,
         };
 
-        (SupabaseCoreModule.forRootAsync as jest.Mock<typeof SupabaseCoreModule.forRootAsync>).mockReturnValueOnce(
+        (SupabaseCoreModule.forRootAsync as Mock<typeof SupabaseCoreModule.forRootAsync>).mockReturnValueOnce(
           dynamicModuleFixture,
         );
 
@@ -72,7 +73,7 @@ describe(SupabaseModule.name, () => {
       });
 
       afterAll(() => {
-        jest.clearAllMocks();
+        vitest.clearAllMocks();
       });
 
       it('should call SupbaseCoreModule.forRoot()', () => {
@@ -95,13 +96,13 @@ describe(SupabaseModule.name, () => {
         let result: unknown;
 
         beforeAll(() => {
-          (getSupabaseClientId as jest.Mock<typeof getSupabaseClientId>).mockReturnValueOnce(SupabaseClient);
+          (getSupabaseClientId as Mock<typeof getSupabaseClientId>).mockReturnValueOnce(SupabaseClient);
 
           result = SupabaseModule.injectClient();
         });
 
         afterAll(() => {
-          jest.clearAllMocks();
+          vitest.clearAllMocks();
         });
 
         it('should call getSupabaseClientId()', () => {

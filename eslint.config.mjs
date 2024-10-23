@@ -1,7 +1,7 @@
 import js from '@eslint/js';
 import tsEslint from 'typescript-eslint';
 import tsEslintParser from '@typescript-eslint/parser';
-//import vitest from 'eslint-plugin-vitest';
+import vitest from 'eslint-plugin-vitest';
 import eslintImport from 'eslint-plugin-import';
 import { fixupPluginRules } from '@eslint/compat';
 
@@ -196,25 +196,25 @@ export default tsEslint.config(
       },
     },
   },
-  // {
-  //   files: ['**/*.spec.ts'],
-  //   plugins: {
-  //     vitest
-  //   },
-  //   rules: {
-  //     ...vitest.configs.recommended.rules,
-  //     ...vitest.configs.all.rules,
-  //     '@typescript-eslint/unbound-method': 'off',
-  //     '@typescript-eslint/no-confusing-void-expression': 'off',
-  //     '@typescript-eslint/no-empty-function': "off",
-  //     '@typescript-eslint/no-magic-numbers': 'off',
-  //     '@typescript-eslint/no-non-null-asserted-optional-chain': 'off',
-  //     'vitest/consistent-test-filename': 'off',
-  //     'vitest/max-expects': 'off',
-  //     'vitest/no-hooks': 'off',
-  //     'vitest/prefer-expect-assertions': 'off',
-  //     'vitest/prefer-strict-equal': 'error',
-  //     'vitest/valid-title': 'off',
-  //   }, 
-  // },
+  {
+    files: ['**/*.spec.ts'],
+    plugins: {
+      vitest
+    },
+    rules: {
+      ...vitest.configs.recommended.rules,
+      ...vitest.configs.all.rules,
+      '@typescript-eslint/unbound-method': 'off',
+      '@typescript-eslint/no-confusing-void-expression': 'off',
+      '@typescript-eslint/no-empty-function': "off",
+      '@typescript-eslint/no-magic-numbers': 'off',
+      '@typescript-eslint/no-non-null-asserted-optional-chain': 'off',
+      'vitest/consistent-test-filename': 'off',
+      'vitest/max-expects': 'off',
+      'vitest/no-hooks': 'off',
+      'vitest/prefer-expect-assertions': 'off',
+      'vitest/prefer-strict-equal': 'error',
+      'vitest/valid-title': 'off',
+    }, 
+  },
 );

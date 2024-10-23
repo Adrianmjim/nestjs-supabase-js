@@ -1,4 +1,4 @@
-import { afterAll, beforeAll, describe, expect, it, jest } from '@jest/globals';
+import { afterAll, beforeAll, describe, expect, it, Mocked, vitest } from 'vitest';
 
 import { createNestSupabaseConfigFactory } from './createNestSupabaseConfigFactory';
 import { SupabaseConfigFixtures } from '../fixtures/SupabaseConfigFixtures';
@@ -7,13 +7,13 @@ import { NestSupabaseConfigFactory } from '../models/NestSupabaseConfigFactory';
 
 describe(createNestSupabaseConfigFactory.name, () => {
   describe('when called', () => {
-    let nestSupabaseConfigFactoryFixture: jest.Mocked<NestSupabaseConfigFactory>;
+    let nestSupabaseConfigFactoryFixture: Mocked<NestSupabaseConfigFactory>;
     let nestSupabaseConfigFixture: NestSupabaseConfig;
     let result: unknown;
 
     beforeAll(() => {
       nestSupabaseConfigFactoryFixture = {
-        createNestSupabaseConfig: jest.fn(),
+        createNestSupabaseConfig: vitest.fn(),
       };
       nestSupabaseConfigFixture = SupabaseConfigFixtures.any;
 
@@ -25,7 +25,7 @@ describe(createNestSupabaseConfigFactory.name, () => {
     });
 
     afterAll(() => {
-      jest.clearAllMocks();
+      vitest.clearAllMocks();
     });
 
     it('should call nestSupabaseConfigFactoryFixture.createNestSupabaseConfig()', () => {
