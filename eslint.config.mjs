@@ -1,7 +1,7 @@
 import js from '@eslint/js';
 import tsEslint from 'typescript-eslint';
 import tsEslintParser from '@typescript-eslint/parser';
-import vitest from 'eslint-plugin-vitest';
+import vitest from '@vitest/eslint-plugin';
 import eslintImport from 'eslint-plugin-import';
 import { fixupPluginRules } from '@eslint/compat';
 
