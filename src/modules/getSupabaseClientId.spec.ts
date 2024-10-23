@@ -1,5 +1,4 @@
 import { beforeAll, describe, expect, it } from '@jest/globals';
-
 import { SupabaseClient } from '@supabase/supabase-js';
 
 import { getSupabaseClientId } from './getSupabaseClientId';

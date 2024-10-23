@@ -1,12 +1,11 @@
 import { afterAll, beforeAll, describe, expect, it, jest } from '@jest/globals';
-
-jest.mock('@nestjs/common', () => ({ Inject: jest.fn() }));
-jest.mock('./getSupabaseClientId');
-
 import { Inject } from '@nestjs/common';
 
 import { getSupabaseClientId } from './getSupabaseClientId';
 import { InjectSupabaseClient } from './InjectSupabaseClient';
+
+jest.mock('@nestjs/common', () => ({ Inject: jest.fn() }));
+jest.mock('./getSupabaseClientId');
 
 describe(InjectSupabaseClient.name, () => {
   describe('when called', () => {
