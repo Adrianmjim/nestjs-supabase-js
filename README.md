@@ -218,7 +218,8 @@ export class CatService {
 This library provides a base guard to authenticate requests using the Supabase auth client.
 
 ### Usage
-To use the `BaseSupabaseAuthGuard`, you need to create a subclass that implements the `extractTokenFromRequest` method. This implementation should define how to extract the token from the request, which might be in the headers, cookies, or query parameters.
+
+To create your own guard that authenticates against Supabase, you just need to create a new guard that extends `BaseSupabaseAuthGuard` and implements the method `extractTokenFromRequest`. This implementation should define how to extract the token from the request, which might be in the headers, cookies, or query parameters.
 
 ```typescript
 import { Injectable, ExecutionContext } from '@nestjs/common';
