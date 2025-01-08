@@ -42,7 +42,7 @@
     "@vitest/eslint-plugin": "1.1.24",
     "prettier": "3.4.2",
     "rimraf": "6.0.1",
-    "typescript": "5.7.2",
+    "typescript": "5.7.3",
     "typescript-eslint": "8.19.1",
     "vitest": "2.1.8"
   },
