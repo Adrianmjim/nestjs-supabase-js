@@ -11,10 +11,10 @@ export class SupabaseCoreModuleProvider {
   private readonly supabaseClients: Map<string, SupabaseClient> = new Map<string, SupabaseClient>();
 
   public constructor(
-    @Inject(SupabaseCoreModuleInjectionSymbols.SUPABASE_CONFIG) nestSupbaseConfig: NestSupabaseConfig,
+    @Inject(SupabaseCoreModuleInjectionSymbols.SUPABASE_CONFIG) nestSupabaseConfig: NestSupabaseConfig,
   ) {
-    if (Array.isArray(nestSupbaseConfig)) {
-      for (const nameSupabaseConfigPair of nestSupbaseConfig) {
+    if (Array.isArray(nestSupabaseConfig)) {
+      for (const nameSupabaseConfigPair of nestSupabaseConfig) {
         this.supabaseClients.set(
           nameSupabaseConfigPair.name,
           createClient(
@@ -27,7 +27,7 @@ export class SupabaseCoreModuleProvider {
     } else {
       this.supabaseClients.set(
         DEFAULT_CLIENT,
-        createClient(nestSupbaseConfig.supabaseUrl, nestSupbaseConfig.supabaseKey, nestSupbaseConfig.options),
+        createClient(nestSupabaseConfig.supabaseUrl, nestSupabaseConfig.supabaseKey, nestSupabaseConfig.options),
       );
     }
   }

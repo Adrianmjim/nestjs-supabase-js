@@ -64,6 +64,5 @@
     "test": "TZ=$npm_package_config_TZ vitest run",
     "test:coverage": "pnpm run test --coverage",
     "test:uncommitted": "pnpm run test --changed HEAD"
-  },
-  "packageManager": "pnpm@9.15.3"
+  }
 }
