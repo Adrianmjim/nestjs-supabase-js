@@ -11,7 +11,8 @@ jobs:
   remove-unnecessary-tag:
     if: github.event.pull_request.merged == false && startsWith(github.event.pull_request.head.ref , 'release/')
     runs-on: ubuntu-latest
-
+    permissions:
+      contents: write
     steps:
       - uses: actions/checkout@v4
 
