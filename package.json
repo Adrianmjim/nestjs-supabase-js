@@ -39,7 +39,7 @@
     "eslint-import-resolver-typescript": "4.3.2",
     "eslint-plugin-import": "2.31.0",
     "eslint-plugin-prettier": "5.2.6",
-    "@vitest/eslint-plugin": "1.1.40",
+    "@vitest/eslint-plugin": "1.1.42",
     "prettier": "3.5.3",
     "rimraf": "6.0.1",
     "typescript": "5.8.3",
